@@ -4,8 +4,10 @@
 const express = require('express');
 const fs = require('fs');
 const hbs = require('hbs');
+const port = process.env.PORT || 8080;
 const app = express();
 app.set('view engine', 'hbs');
+
 
 //Dùng syntax trên để liên kết đến 1 file html trong folder public
 
@@ -53,7 +55,9 @@ app.get("/", (req, res) => {
     })
 });
 
-app.listen(8080);
+app.listen(port, () => {
+    console.log(`Server is up on port ${port}`);
+});
 app.get("/bad", (req, res)=> {
     res.send(`Unable to connect to the server`);
 });
